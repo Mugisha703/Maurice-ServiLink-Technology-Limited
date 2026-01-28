@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maurice ServiLink Tech - Technology Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #00a8ff;
+            --accent: #ff6b35;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+        
+        /* Compact Header */
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Compact Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo i {
+            color: var(--secondary);
+            font-size: 3.5rem;
+        }
+        
+        .logo h1 {
+            font-size: 2.0rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        /* Compact Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0.8rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Compact User Controls */
+        .user-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .auth-btn {
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.9rem;
+        }
+        
+        .login-btn {
+            background-color: transparent;
+            color: white;
+            border: 1px solid var(--secondary);
+        }
+        
+        .login-btn:hover {
+            background-color: rgba(0, 168, 255, 0.1);
+        }
+        
+        .register-btn {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .register-btn:hover {
+            background-color: #ff8533;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            display: none;
+            padding: 2rem 0;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(0, 86, 179, 0.8)), url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background-color: #ff8533;
+            transform: translateY(-2px);
+        }
+        
+        .cta-button.secondary {
+            background-color: var(--secondary);
+        }
+        
+        /* Welcome Section */
+        .welcome-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .welcome-section h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .trust-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .trust-point {
+            background-color: #f0f8ff;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-header {
+            height: 150px;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .skill-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--accent);
+        }
+        
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Enhanced Provider Cards with Large Photos */
+        .providers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin: 1rem 0;
+        }
+
+        .provider-card {
+            background-color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .provider-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary);
+        }
+     /* WhatsApp Button for all providers */
+.whatsapp-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+    margin-top: 1.5rem;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+    background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+}
+
+.whatsapp-btn i {
+    font-size: 1.2rem;
+}
+
+.phone-info {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-top: 0.8rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0.5rem;
+    background: rgba(37, 211, 102, 0.1);
+    border-radius: 6px;
+    color: #128C7E;
+}
+
+.phone-info i {
+    color: #25D366;
+}
+
+        .provider-highlight::after {
+            content: 'WhatsApp';
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        /* Large Photo Container */
+        .provider-photo-large {
+            width: 180px;
+            height: 180px;
+            border-radius: 80%;
+            overflow: hidden;
+            margin: 0 auto 2.8rem;
+            border: 1px solid var(--secondary);
+            box-shadow: 0 8px 25px rgba(0, 86, 179, 0.2);
+            position: relative;
+        }
+
+        .provider-photo-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .provider-card:hover .provider-photo-large img {
+            transform: scale(1.08);
+        }
+
+        /* Provider Text Styles */
+        .provider-card h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+            color: var(--dark);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .provider-description {
+            font-size: 1rem;
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        /* WhatsApp Button Styles */
+        .whatsapp-contact {
+            margin-top: auto;
+            width: 100%;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+            text-decoration: none;
+            display: block;
+            border-radius: 10px;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* Special WhatsApp button for Liliane */
+        .whatsapp-btn-liliane {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.25);
+            border: 2px solid transparent;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .whatsapp-btn-liliane:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+            border-color: white;
+        }
+
+        .whatsapp-btn-liliane i {
+            font-size: 1.2rem;
+        }
+
+        .phone-display {
+            background: rgba(37, 211, 102, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #128C7E;
+        }
+
+        .phone-info {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 1rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .phone-info i {
+            color: var(--primary);
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .floating-whatsapp:hover {
+            width: 200px;
+            border-radius: 30px;
+            padding-right: 20px;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .floating-text {
+            opacity: 0;
+            white-space: nowrap;
+            margin-left: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+        
+        .floating-whatsapp:hover .floating-text {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .floating-whatsapp {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+            }
+            
+            .floating-whatsapp:hover {
+                width: 55px;
+                height: 55px;
+                border-radius: 50%;
+                padding-right: 0;
+            }
+            
+            .floating-text {
+                display: none;
+            }
+        }
+
+        /* For non-Liliane cards (centered content when no button) */
+        .provider-card:not(:has(.whatsapp-contact)) {
+            justify-content: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .providers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+            
+            .provider-photo-large {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .provider-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .providers-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .provider-photo-large {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .provider-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .provider-description {
+                font-size: 0.95rem;
+            }
+        }
+        
+        /* Marketplace */
+        .marketplace-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .category-filter {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background-color: white;
+            border: 1px solid var(--light-gray);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .category-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--light-gray);
+            width: 200px;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .marketplace-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 180px;
+            background-color: #f8f9fa;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .product-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        
+        /* Admin Section */
+        .admin-login-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 400px;
+            margin: 2rem auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .admin-login-form h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .admin-panel {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: none;
+        }
+        
+        .admin-panel.active {
+            display: block;
+        }
+        
+        .admin-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .admin-card {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .admin-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .admin-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .admin-form {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        
+        .admin-form.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        /* Auth Modal */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .auth-modal.active {
+            display: flex;
+        }
+        
+        .auth-box {
+            background: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            padding: 2rem;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 0.8rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .auth-tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .country-code {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .account-type {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .account-type label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            color: white;
+            font-weight: 500;
+            z-index: 1002;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        
+        .notification.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .notification.success {
+            background-color: var(--success);
+        }
+        
+        .notification.error {
+            background-color: var(--danger);
+        }
+        
+        .notification.info {
+            background-color: var(--secondary);
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
+                flex-direction: column;
+                padding: 1rem;
+                display: none;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav a {
+                display: block;
+                padding: 0.8rem;
+            }
+            
+            .marketplace-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .search-box input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Compact Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo" id="homeBtn">
+                <i class="fas fa-link"></i>
+                <h1>Maurice <span>ServiLink</span> Tech</h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                    <li><a href="#services" class="nav-link" data-section="services">Services</a></li>
+                    <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+                    <li><a href="#providers" class="nav-link" data-section="providers">Providers</a></li>
+                    <li><a href="#marketplace" class="nav-link" data-section="marketplace">Marketplace</a></li>
+                    <li><a href="#admin" class="nav-link" data-section="admin">Admin</a></li>
+                </ul>
+            </nav>
+            
+            <div class="user-controls">
+                <button class="auth-btn login-btn" id="loginBtn">Login</button>
+                <button class="auth-btn register-btn" id="registerBtn">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h2>Connecting Technology with Excellence</h2>
+                <p>Maurice ServiLink Tech provides cutting-edge technology solutions, trusted services, and premium tech products to empower businesses and individuals.</p>
+                <button class="cta-button" id="exploreBtn">Explore Services</button>
+                <button class="cta-button secondary" id="marketplaceBtn">Visit Marketplace</button>
+            </div>
+            
+            <div class="welcome-section">
+                <h2><i class="fas fa-handshake"></i> Welcome to Maurice ServiLink Tech</h2>
+                <p>At Maurice ServiLink Tech, we bridge the gap between innovative technology and practical business solutions. With years of expertise in the tech industry, we understand the challenges that businesses face in today's rapidly evolving digital landscape.</p>
+                <p>Our mission is to provide reliable, efficient, and scalable technology services that empower your business to thrive. We believe in building lasting relationships based on trust, transparency, and exceptional results.</p>
+                
+                <div class="trust-points">
+                    <div class="trust-point">
+                        <h3><i class="fas fa-shield-alt"></i> Trust & Reliability</h3>
+                        <p>We stand by our services with guaranteed reliability and 24/7 support to ensure your operations run smoothly.</p>
+                    </div>
+                    <div class="trust-point">
+                        <h3><i class="fas fa-lightbulb"></i> Expert Advice</h3>
+                        <p>Our team of certified experts provides tailored advice to help you make the best technology decisions.</p>
+                    </div>
+                    <div class="trust-point">
+                        <h3><i class="fas fa-handshake"></i> Partnership Approach</h3>
+                        <p>We work as an extension of your team, committed to your success through collaborative problem-solving.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services loaded here -->
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="section-title">Our Skills & Expertise</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: var(--gray);">
+                Our team possesses deep expertise across all major technology domains, ensuring we can handle any challenge with precision and innovation.
+            </p>
+            
+            <div class="skills-grid" id="skillsGrid">
+                <!-- Skills loaded here -->
+            </div>
+            
+            <div class="welcome-section" style="margin-top: 3rem;">
+                <h2><i class="fas fa-chart-line"></i> Why Choose Our Expertise?</h2>
+                <p>At Maurice ServiLink Tech, we combine technical expertise with business acumen to deliver solutions that drive real value. Our certified professionals stay at the forefront of technology trends, ensuring you benefit from the latest advancements.</p>
+                
+                <div class="trust-points" style="margin-top: 2rem;">
+                    <div class="trust-point">
+                        <h3><i class="fas fa-certificate"></i> Certified Professionals</h3>
+                        <p>Our team holds certifications from leading technology providers including Cisco, Microsoft, AWS, and CompTIA.</p>
+                    </div>
+                    <div class="trust-point">
+                        <h3><i class="fas fa-history"></i> Years of Experience</h3>
+                        <p>Average 10+ years of industry experience across our technical team, delivering proven solutions.</p>
+                    </div>
+                    <div class="trust-point">
+                        <h3><i class="fas fa-graduation-cap"></i> Continuous Training</h3>
+                        <p>Regular training programs ensure our skills remain cutting-edge and aligned with industry standards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Providers Section -->
+        <section id="providers" class="section">
+            <h2 class="section-title">Our Service Providers</h2>
+            <div class="providers-grid" id="providersGrid">
+                <!-- Providers loaded here -->
+            </div>
+        </section>
+
+        <!-- Marketplace Section -->
+        <section id="marketplace" class="section">
+            <h2 class="section-title">Tech Marketplace</h2>
+            
+            <div class="marketplace-controls">
+                <div class="category-filter">
+                    <button class="category-btn active" data-category="all">Byose</button>
+                    <button class="category-btn" data-category="security">Umutekano</button>
+                    <button class="category-btn" data-category="laptops">Laptops</button>
+                    <button class="category-btn" data-category="storage">Kubika</button>
+                    <button class="category-btn" data-category="networking">Kwihuza</button>
+                </div>
+                
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="productSearch" placeholder="Shaka ibicuruzwa...">
+                </div>
+            </div>
+            
+            <div class="marketplace-grid" id="marketplaceGrid">
+                <!-- Products loaded here -->
+            </div>
+        </section>
+
+        <!-- Admin Section -->
+        <section id="admin" class="section">
+            <div class="admin-login-form" id="adminLoginForm">
+                <h3><i class="fas fa-user-shield"></i> Admin Login</h3>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="adminEmail" placeholder="Enter admin email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="adminPassword" placeholder="Enter admin password">
+                </div>
+                <button class="cta-button" id="adminLoginBtn" style="width: 100%;">Login as Admin</button>
+            </div>
+            
+            <div class="admin-panel" id="adminPanel">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3><i class="fas fa-user-shield"></i> Admin Dashboard</h3>
+                    <button class="cta-button secondary" id="logoutAdminBtn">Logout</button>
+                </div>
+                
+                <div class="admin-controls">
+                    <div class="admin-card" data-form="add-product">
+                        <i class="fas fa-box-open"></i>
+                        <h3>Add Product</h3>
+                        <p>Add new items to marketplace</p>
+                    </div>
+                    
+                    <div class="admin-card" data-form="add-service">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Add Service</h3>
+                        <p>Create new service offering</p>
+                    </div>
+                    
+                    <div class="admin-card" data-form="add-provider">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Add Provider</h3>
+                        <p>Add new service provider</p>
+                    </div>
+                    
+                    <div class="admin-card" data-form="view-items">
+                        <i class="fas fa-eye"></i>
+                        <h3>View Items</h3>
+                        <p>Manage existing items</p>
+                    </div>
+                </div>
+                
+                <!-- Admin Forms -->
+                <div class="admin-form" id="add-product-form">
+                    <h4>Add New Product</h4>
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" id="productName" placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="productCategory">
+                            <option value="security">Security Systems</option>
+                            <option value="laptops">Laptops</option>
+                            <option value="storage">Storage</option>
+                            <option value="networking">Networking</option>
+                            <option value="accessories">Accessories</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price (RWF)</label>
+                        <input type="number" id="productPrice" placeholder="0" step="100">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="productDescription" rows="3" placeholder="Enter product description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="text" id="productImage" placeholder="https://example.com/image.jpg">
+                        <small style="color: var(--gray); display: block; margin-top: 0.3rem;">Use image URLs from Unsplash or other sources</small>
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <button class="cta-button" id="saveProduct">Save Product</button>
+                        <button class="cta-button secondary" id="cancelProduct">Cancel</button>
+                    </div>
+                </div>
+                
+                <div class="admin-form" id="add-service-form">
+                    <h4>Add New Service</h4>
+                    <div class="form-group">
+                        <label>Service Name</label>
+                        <input type="text" id="serviceName" placeholder="Enter service name">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="serviceDescription" rows="3" placeholder="Enter service description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon Class</label>
+                        <input type="text" id="serviceIcon" placeholder="fas fa-icon-name">
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <button class="cta-button" id="saveService">Save Service</button>
+                        <button class="cta-button secondary" id="cancelService">Cancel</button>
+                    </div>
+                </div>
+                
+                <div class="admin-form" id="add-provider-form">
+    <h4>Add New Provider</h4>
+    <div class="form-group">
+        <label>Provider Name</label>
+        <input type="text" id="providerName" placeholder="Enter provider name">
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea id="providerDescription" rows="2" placeholder="Enter provider description"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" id="providerPhone" placeholder="+250788123456">
+    </div>
+    <div class="form-group">
+        <label>WhatsApp Message</label>
+        <textarea id="providerMessage" rows="2" placeholder="Default message for WhatsApp"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Icon Class</label>
+        <input type="text" id="providerIcon" placeholder="fas fa-icon-name">
+    </div>
+    <div class="form-group">
+        <label>Photo URL</label>
+        <input type="text" id="providerPhoto" placeholder="https://example.com/photo.jpg">
+    </div>
+    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+        <button class="cta-button" id="saveProvider">Save Provider</button>
+        <button class="cta-button secondary" id="cancelProvider">Cancel</button>
+    </div>
+</div>
+                
+                <div class="admin-form" id="view-items-form">
+                    <h4>Manage Items</h4>
+                    <div style="margin: 1rem 0;">
+                        <h5>Products (Total: <span id="productCount">0</span>)</h5>
+                        <div id="productsList" style="max-height: 200px; overflow-y: auto; margin-top: 1rem;"></div>
+                    </div>
+                    <div style="margin: 1rem 0;">
+                        <h5>Services (Total: <span id="serviceCount">0</span>)</h5>
+                        <div id="servicesList" style="max-height: 200px; overflow-y: auto; margin-top: 1rem;"></div>
+                    </div>
+                    <div style="margin: 1rem 0;">
+                        <h5>Providers (Total: <span id="providerCount">0</span>)</h5>
+                        <div id="providersList" style="max-height: 200px; overflow-y: auto; margin-top: 1rem;"></div>
+                    </div>
+                    <button class="cta-button secondary" id="closeViewItems">Close</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-box">
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-tab="login">Login</div>
+                <div class="auth-tab" data-tab="register">Register</div>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter password">
+                </div>
+                <div class="form-group">
+                    <label>Account Type</label>
+                    <div class="account-type">
+                        <label><input type="radio" name="loginType" value="customer" checked> <i class="fas fa-user"></i> Customer</label>
+                        <label><input type="radio" name="loginType" value="provider"> <i class="fas fa-briefcase"></i> Provider</label>
+                    </div>
+                </div>
+                <button class="cta-button" id="submitLogin" style="width: 100%;">Login</button>
+            </div>
+            
+            <!-- Register Form -->
+            <div id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="registerName" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="registerEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <div class="country-code">
+                        <select id="countryCode" style="width: 120px;">
+                            <option value="+250">+250 (Rwanda)</option>
+                            <option value="+1">+1 (USA)</option>
+                            <option value="+44">+44 (UK)</option>
+                            <option value="+254">+254 (Kenya)</option>
+                            <option value="+255">+255 (Tanzania)</option>
+                            <option value="+256">+256 (Uganda)</option>
+                            <option value="+27">+27 (South Africa)</option>
+                        </select>
+                        <input type="tel" id="registerPhone" placeholder="Phone number" style="flex: 1;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="registerPassword" placeholder="Create password (min 6 chars)">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm password">
+                </div>
+                <div class="form-group">
+                    <label>Account Type</label>
+                    <div class="account-type">
+                        <label><input type="radio" name="registerType" value="customer" checked> <i class="fas fa-user"></i> Customer</label>
+                        <label><input type="radio" name="registerType" value="provider"> <i class="fas fa-briefcase"></i> Provider</label>
+                        <label><input type="radio" name="registerType" value="business"> <i class="fas fa-building"></i> Business</label>
+                    </div>
+                </div>
+                <button class="cta-button" id="submitRegister" style="width: 100%;">Register</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <span id="notificationText"></span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>Maurice ServiLink Tech</h3>
+                    <p>Your trusted partner for technology solutions</p>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> info@mauriceservilink.tech</p>
+                    <p><i class="fas fa-phone"></i> +250 788 123 456</p>
+                </div>
+                <div>
+                    <h3>Software Training</h3>
+                    <p>Contact Liliane for software training:</p>
+                    <a href="https://wa.me/250788123456?text=Hello%20Liliane,%20I%20would%20like%20to%20inquire%20about%20software%20training%20services" 
+                       target="_blank" 
+                       style="color: #25D366; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Chat with Liliane</span>
+                    </a>
+                    <p style="font-size: 0.9rem; color: #aaa; margin-top: 5px;">
+                        Available: Mon-Fri, 9AM-5PM
+                    </p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <p><a href="#home" class="nav-link" data-section="home" style="color: white; text-decoration: none;">Home</a></p>
+                    <p><a href="#services" class="nav-link" data-section="services" style="color: white; text-decoration: none;">Services</a></p>
+                    <p><a href="#marketplace" class="nav-link" data-section="marketplace" style="color: white; text-decoration: none;">Marketplace</a></p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: #aaa;">
+                &copy; 2023 Maurice ServiLink Tech. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/250788123456?text=Hello%20Liliane,%20I%20would%20like%20to%20contact%20you%20about%20your%20software%20training%20services" 
+       class="floating-whatsapp" 
+       target="_blank" 
+       title="Chat with Liliane on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="floating-text">Chat with Liliane</span>
+    </a>
+
+    <script>
+        // Admin credentials (hidden from users)
+        const ADMIN_EMAIL = "mauricemugisha703@gmail.com";
+        const ADMIN_PASSWORD = "maurice@2025!";
+        
+        // Data storage with IMAGE URLs added
+        let services = [
+            { id: 1, name: "Network Infrastructure", description: "Design, implementation, and management of secure network solutions.", icon: "fas fa-network-wired" },
+            { id: 2, name: "Cloud Solutions", description: "Migration, deployment, and management of cloud infrastructure.", icon: "fas fa-cloud" },
+            { id: 3, name: "Cybersecurity", description: "Security assessments, threat monitoring, and protection solutions.", icon: "fas fa-shield-alt" },
+            { id: 4, name: "IT Support", description: "Proactive IT support and maintenance services.", icon: "fas fa-laptop-medical" },
+            { id: 5, name: "Data Management", description: "Secure data storage, backup solutions, and analytics.", icon: "fas fa-database" },
+            { id: 6, name: "Software Development", description: "Custom software and mobile application development.", icon: "fas fa-code" }
+        ];
+        
+        let skills = [
+            { id: 1, name: "Network Engineering", description: "Expertise in designing and managing network infrastructures.", icon: "fas fa-network-wired" },
+            { id: 2, name: "Cloud Architecture", description: "Certified expertise in AWS, Azure, and Google Cloud platforms.", icon: "fas fa-cloud" },
+            { id: 3, name: "Cybersecurity", description: "Comprehensive security services and vulnerability assessments.", icon: "fas fa-shield-alt" },
+            { id: 4, name: "Data Management", description: "Database design, management, and business intelligence.", icon: "fas fa-database" },
+            { id: 5, name: "Software Development", description: "Full-stack development with modern frameworks.", icon: "fas fa-laptop-code" },
+            { id: 6, name: "IT Consulting", description: "Strategic IT consulting for business alignment.", icon: "fas fa-chart-line" }
+        ];
+        
+let providers = [
+    { 
+        id: 1, 
+        name: "Mugisha Maurice", 
+        description: "CCTV Camera Installation", 
+        icon: "fab fa-cisco",
+        photo: "maurice.png",
+        phone: "+250788111111",  // Add this line
+        whatsappMessage: "Hello Maurice, I saw your CCTV camera installation services"  // Add this line
+    },
+    { 
+        id: 2, 
+        name: "Microsoft", 
+        description: "Cloud & Software Solutions", 
+        icon: "fab fa-microsoft",
+        photo: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        phone: "+18006524678",  // Add this line
+        whatsappMessage: "Hello Microsoft, I'm interested in your cloud solutions"  // Add this line
+    },
+    { 
+        id: 3, 
+        name: "Hikvision", 
+        description: "Security & Surveillance", 
+        icon: "fas fa-video",
+        photo: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        phone: "+861057105700",  // Add this line
+        whatsappMessage: "Hello Hikvision, I need information about your security systems"  // Add this line
+    },
+    { 
+        id: 4, 
+        name: "HP Inc.", 
+        description: "Hardware & Enterprise Solutions", 
+        icon: "fab fa-hp",
+        photo: "https://images.unsplash.com/photo-1496200186974-4293800e2c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        phone: "+18004744767",  // Add this line
+        whatsappMessage: "Hello HP, I need hardware solutions for my business"  // Add this line
+    },
+    { 
+        id: 5, 
+        name: "Dell Technologies", 
+        description: "Enterprise Hardware", 
+        icon: "fas fa-server",
+        photo: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        phone: "+18004358935",  // Add this line
+        whatsappMessage: "Hello Dell, I'm interested in your enterprise hardware"  // Add this line
+    },
+    { 
+        id: 6, 
+        name: "Lenovo", 
+        description: "Computers & Mobile Devices", 
+        icon: "fas fa-laptop",
+        photo: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        phone: "+18666263686",  // Add this line
+        whatsappMessage: "Hello Lenovo, I need computers and mobile devices"  // Add this line
+    },
+    { 
+        id: 7, 
+        name: "Mukeshimana Liliane", 
+        description: "Software Trainer", 
+        icon: "fas fa-user-tie",
+        photo: "liliane.png",
+        phone: "+250788123456",  // Add this line
+        whatsappMessage: "Hello Liliane, I need software training services"  // Add this line
+    },
+    { 
+        id: 8, 
+        name: "Ndayiringiye Benjamin", 
+        description: "WEB developer & mantainer", 
+        icon: "fas fa-user-tie",
+        photo: "Benjamin.png",
+        phone: "+250788654321",  // Add this line
+        whatsappMessage: "Hello Benjamin, I need web development services"  // Add this line
+    }
+];
+        
+        // Products with RWF prices (approx conversion: 1 USD = 1200 RWF)
+        let products = [
+            { 
+                id: 1, 
+                name: "Hikvision 4MP Outdoor Camera", 
+                category: "security", 
+                price: 228000,  // 189.99 USD converted to RWF
+                description: "4MP Outdoor Bullet Camera with EXIR 2.0, 2.8mm lens, 30m IR distance.", 
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+            },
+            { 
+                id: 2, 
+                name: "Hikvision Turbo HD 1080P 4 Channel CCTV Camera Kit DS-J2421", 
+                category: "security", 
+                price: 420000,  // 349.99 USD converted to RWF
+                description: "4-channel Network Video Recorder with 4 PoE ports, supports up to 12MP resolution.", 
+                image: "data:image/jpeg;base64,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" 
+            },
+            { 
+                id: 3, 
+                name: "Solid State Drive", 
+                category: "storage", 
+                price: 348000,  // 289.99 USD converted to RWF
+                description: "A semiconductor-based storage device, which typically uses NAND flash memory to save persistent data.",
+                image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3QV1SPFvjRverxuQOruRGltkV770qbmLYJQ&s"
+            },
+            { 
+                id: 5, 
+                name: "TV set on wall unit", 
+                category: "Televisions", 
+                price: 2640000,  // 2199.99 USD converted to RWF
+                description: "All Royalty-Free licences include global use rights, comprehensive protection, and simple pricing with volume discounts available.", 
+                image: "data:image/jpeg;base64,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" 
+            },
+            { 
+                id: 6, 
+                name: "Lenovo ThinkPad X1 Carbon", 
+                category: "laptops", 
+                price: 2160000,  // 1799.99 USD converted to RWF
+                description: "14\" WQHD display, Intel Core i7-1165G7, 16GB RAM, 512GB SSD, Windows 10 Pro.", 
+                image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+            },
+            { 
+                id: 7, 
+                name: "Western Digital 4TB HDD", 
+                category: "storage", 
+                price: 108000,  // 89.99 USD converted to RWF
+                description: "WD Blue 4TB Internal Hard Drive - 5400 RPM, SATA 6 Gb/s, 64MB cache.", 
+                image: "https://images.unsplash.com/photo-1591453089816-0fbb971b454c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+            },
+            { 
+                id: 8, 
+                name: "HP 15 Graphite Mist Laptop", 
+                category: "Laptops", 
+                price: 180000,  // 149.99 USD converted to RWF
+                description: "HP 15 Graphite Mist Laptop Touchscreen, Intel Core i5-8250U, 1TB HDD + 16GB Intel Optane memory, 4GB SDRAM, DVD, 15-da0053wm.", 
+                image: "data:image/jpeg;base64,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" 
+            },
+            { 
+                id: 9, 
+                name: "Cisco Catalyst Switch", 
+                category: "networking", 
+                price: 1080000,  // 899.99 USD converted to RWF
+                description: "24-port Gigabit Ethernet switch, PoE+, Layer 3, Cisco DNA-ready.", 
+                image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+            },
+            { 
+                id: 10, 
+                name: "Ubiquiti Access Point", 
+                category: "networking", 
+                price: 120000,  // 99.99 USD converted to RWF
+                description: "Wi-Fi 6 access point, dual-band, 1.5 Gbps aggregate throughput, PoE powered.", 
+                image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+            }
+        ];
+        
+        // DOM Elements
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const homeBtn = document.getElementById('homeBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const authModal = document.getElementById('authModal');
+        const authTabs = document.querySelectorAll('.auth-tab');
+        const authForms = document.querySelectorAll('.auth-form');
+        const submitLogin = document.getElementById('submitLogin');
+        const submitRegister = document.getElementById('submitRegister');
+        const exploreBtn = document.getElementById('exploreBtn');
+        const marketplaceBtn = document.getElementById('marketplaceBtn');
+        const adminLoginBtn = document.getElementById('adminLoginBtn');
+        const adminPanel = document.getElementById('adminPanel');
+        const adminLoginForm = document.getElementById('adminLoginForm');
+        const logoutAdminBtn = document.getElementById('logoutAdminBtn');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notificationText');
+        const servicesGrid = document.getElementById('servicesGrid');
+        const skillsGrid = document.getElementById('skillsGrid');
+        const providersGrid = document.getElementById('providersGrid');
+        const marketplaceGrid = document.getElementById('marketplaceGrid');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const productSearch = document.getElementById('productSearch');
+        const adminCards = document.querySelectorAll('.admin-card');
+        
+        // State
+        let isAdminLoggedIn = false;
+        let currentUser = null;
+        
+        // Utility Functions
+        function showNotification(message, type = 'info') {
+            notificationText.textContent = message;
+            notification.className = `notification ${type} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        function switchSection(sectionId) {
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === sectionId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            
+            authModal.classList.remove('active');
+        }
+        
+        // Render Functions
+        function renderServices() {
+            servicesGrid.innerHTML = '';
+            services.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.innerHTML = `
+                    <div class="service-header">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>${service.name}</h3>
+                        <p>${service.description}</p>
+                        <button class="cta-button" onclick="showNotification('Service request sent for ${service.name}!', 'success')">Saba serivisi</button>
+                    </div>
+                `;
+                servicesGrid.appendChild(card);
+            });
+        }
+        
+        function renderSkills() {
+            skillsGrid.innerHTML = '';
+            skills.forEach(skill => {
+                const card = document.createElement('div');
+                card.className = 'skill-card';
+                card.innerHTML = `
+                    <i class="${skill.icon}"></i>
+                    <h3>${skill.name}</h3>
+                    <p>${skill.description}</p>
+                `;
+                skillsGrid.appendChild(card);
+            });
+        }
+        
+function renderProviders() {
+    providersGrid.innerHTML = '';
+    providers.forEach(provider => {
+        const card = document.createElement('div');
+        card.className = 'provider-card';
+        
+        // Clean phone number for WhatsApp link (remove spaces, +, etc.)
+        const cleanPhone = provider.phone.replace(/\s+/g, '').replace('+', '');
+        const encodedMessage = encodeURIComponent(provider.whatsappMessage);
+        
+        let providerContent = `
+            <div class="provider-photo-large">
+                <img src="${provider.photo}" alt="${provider.name}" 
+                     onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'; this.onerror=null;">
+            </div>
+            <h3>${provider.name}</h3>
+            <p class="provider-description">${provider.description}</p>
+        `;
+        
+        let whatsappButton = `
+            <div class="whatsapp-contact">
+                <a href="https://wa.me/${cleanPhone}?text=${encodedMessage}" 
+                   target="_blank" 
+                   class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> 
+                    <span>Contact via WhatsApp</span>
+                </a>
+                <div class="phone-info">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>${provider.phone}</span>
+                </div>
+            </div>
+        `;
+        
+        card.innerHTML = `
+            ${providerContent}
+            ${whatsappButton}
+        `;
+        providersGrid.appendChild(card);
+    });
+}
+        
+        function renderProducts(filterCategory = 'all', searchTerm = '') {
+            marketplaceGrid.innerHTML = '';
+            
+            const filteredProducts = products.filter(product => {
+                const matchesCategory = filterCategory === 'all' || product.category === filterCategory;
+                const matchesSearch = searchTerm === '' || 
+                    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    product.description.toLowerCase().includes(searchTerm.toLowerCase());
+                
+                return matchesCategory && matchesSearch;
+            });
+            
+            if (filteredProducts.length === 0) {
+                marketplaceGrid.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; padding: 2rem;">Nta bicuruzwa byabonetse.</p>';
+                return;
+            }
+            
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-content">
+                        <span style="font-size: 0.8rem; color: var(--gray); text-transform: uppercase;">${product.category}</span>
+                        <h3>${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="price">${product.price.toLocaleString('en-RW')} RWF</div>
+                        <button class="cta-button" onclick="showNotification('${product.name} yongewe mu nziza!', 'success')">Ongeramo</button>
+                    </div>
+                `;
+                marketplaceGrid.appendChild(card);
+            });
+        }
+        
+        function showAdminForm(formId) {
+            document.querySelectorAll('.admin-form').forEach(form => {
+                form.classList.remove('active');
+            });
+            
+            const form = document.getElementById(`${formId}-form`);
+            if (form) {
+                form.classList.add('active');
+            }
+            
+            if (formId === 'view-items') {
+                updateViewItems();
+            }
+        }
+        
+        function updateViewItems() {
+            document.getElementById('productCount').textContent = products.length;
+            document.getElementById('serviceCount').textContent = services.length;
+            document.getElementById('providerCount').textContent = providers.length;
+            
+            const productsList = document.getElementById('productsList');
+            const servicesList = document.getElementById('servicesList');
+            const providersList = document.getElementById('providersList');
+            
+            productsList.innerHTML = products.map(p => `
+                <div style="padding: 0.5rem; background: white; margin-bottom: 0.5rem; border-radius: 4px;">
+                    <strong>${p.name}</strong> - ${p.price.toLocaleString('en-RW')} RWF (${p.category})
+                    <button onclick="deleteProduct(${p.id})" style="float: right; background: var(--danger); color: white; border: none; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.8rem;">Delete</button>
+                </div>
+            `).join('');
+            
+            servicesList.innerHTML = services.map(s => `
+                <div style="padding: 0.5rem; background: white; margin-bottom: 0.5rem; border-radius: 4px;">
+                    <strong>${s.name}</strong>
+                    <button onclick="deleteService(${s.id})" style="float: right; background: var(--danger); color: white; border: none; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.8rem;">Delete</button>
+                </div>
+            `).join('');
+            
+            providersList.innerHTML = providers.map(p => `
+                <div style="padding: 0.5rem; background: white; margin-bottom: 0.5rem; border-radius: 4px;">
+                    <strong>${p.name}</strong>
+                    <button onclick="deleteProvider(${p.id})" style="float: right; background: var(--danger); color: white; border: none; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.8rem;">Delete</button>
+                </div>
+            `).join('');
+        }
+        
+        // Delete Functions
+        function deleteProduct(id) {
+            products = products.filter(p => p.id !== id);
+            renderProducts('all', productSearch.value);
+            updateViewItems();
+            showNotification('Product deleted successfully!', 'success');
+        }
+        
+        function deleteService(id) {
+            services = services.filter(s => s.id !== id);
+            renderServices();
+            updateViewItems();
+            showNotification('Service deleted successfully!', 'success');
+        }
+        
+        function deleteProvider(id) {
+            providers = providers.filter(p => p.id !== id);
+            renderProviders();
+            updateViewItems();
+            showNotification('Provider deleted successfully!', 'success');
+        }
+        
+        // Event Listeners
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('data-section');
+                switchSection(sectionId);
+            });
+        });
+        
+        homeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            switchSection('home');
+        });
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Auth Modal
+        loginBtn.addEventListener('click', () => {
+            authModal.classList.add('active');
+            switchTab('login');
+        });
+        
+        registerBtn.addEventListener('click', () => {
+            authModal.classList.add('active');
+            switchTab('register');
+        });
+        
+        authModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                authModal.classList.remove('active');
+            }
+        });
+        
+        authTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                switchTab(tabName);
+            });
+        });
+        
+        function switchTab(tabName) {
+            authTabs.forEach(tab => tab.classList.remove('active'));
+            authForms.forEach(form => form.classList.remove('active'));
+            
+            document.querySelector(`.auth-tab[data-tab="${tabName}"]`).classList.add('active');
+            document.getElementById(`${tabName}Form`).classList.add('active');
+        }
+        
+        // User Login
+        submitLogin.addEventListener('click', function() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const accountType = document.querySelector('input[name="loginType"]:checked').value;
+            
+            if (!email || !password) {
+                showNotification('Please fill in all fields', 'error');
+                return;
+            }
+            
+            currentUser = { email, accountType };
+            showNotification(`Welcome ${accountType}! Login successful.`, 'success');
+            authModal.classList.remove('active');
+            
+            loginBtn.textContent = `Hi, ${email.split('@')[0]}`;
+            registerBtn.style.display = 'none';
+        });
+        
+        // User Registration
+        submitRegister.addEventListener('click', function() {
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const phone = document.getElementById('countryCode').value + document.getElementById('registerPhone').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const accountType = document.querySelector('input[name="registerType"]:checked').value;
+            
+            if (!name || !email || !phone || !password || !confirmPassword) {
+                showNotification('Please fill in all fields', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showNotification('Passwords do not match', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showNotification('Password must be at least 6 characters', 'error');
+                return;
+            }
+            
+            currentUser = { name, email, phone, accountType };
+            showNotification(`Registration successful! Welcome ${accountType} user.`, 'success');
+            authModal.classList.remove('active');
+            
+            loginBtn.textContent = `Hi, ${name}`;
+            registerBtn.style.display = 'none';
+        });
+        
+        // Admin Login
+        adminLoginBtn.addEventListener('click', function() {
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            if (!email || !password) {
+                showNotification('Please enter admin credentials', 'error');
+                return;
+            }
+            
+            if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+                isAdminLoggedIn = true;
+                adminLoginForm.style.display = 'none';
+                adminPanel.classList.add('active');
+                showNotification('Admin login successful!', 'success');
+            } else {
+                showNotification('Invalid admin credentials', 'error');
+            }
+        });
+        
+        // Admin Logout
+        logoutAdminBtn.addEventListener('click', function() {
+            isAdminLoggedIn = false;
+            adminPanel.classList.remove('active');
+            adminLoginForm.style.display = 'block';
+            document.getElementById('adminEmail').value = '';
+            document.getElementById('adminPassword').value = '';
+            showNotification('Admin logged out', 'info');
+        });
+        
+        // Admin Cards
+        adminCards.forEach(card => {
+            card.addEventListener('click', function() {
+                if (!isAdminLoggedIn) {
+                    showNotification('Please login as admin first', 'error');
+                    return;
+                }
+                
+                const formId = this.getAttribute('data-form');
+                showAdminForm(formId);
+            });
+        });
+        
+        // Save Product with Image
+        document.getElementById('saveProduct')?.addEventListener('click', function() {
+            const name = document.getElementById('productName').value;
+            const category = document.getElementById('productCategory').value;
+            const price = parseFloat(document.getElementById('productPrice').value);
+            const description = document.getElementById('productDescription').value;
+            const image = document.getElementById('productImage').value;
+            
+            if (!name || !category || !price || !description || !image) {
+                showNotification('Please fill in all fields including image URL', 'error');
+                return;
+            }
+            
+            const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
+            
+            products.push({
+                id: newId,
+                name,
+                category,
+                price,
+                description,
+                image: image
+            });
+            
+            showNotification('Product with image added successfully!', 'success');
+            renderProducts('all', productSearch.value);
+            
+            // Clear form
+            document.getElementById('productName').value = '';
+            document.getElementById('productPrice').value = '';
+            document.getElementById('productDescription').value = '';
+            document.getElementById('productImage').value = '';
+            document.getElementById('add-product-form').classList.remove('active');
+        });
+        
+        // Save Service
+        document.getElementById('saveService')?.addEventListener('click', function() {
+            const name = document.getElementById('serviceName').value;
+            const description = document.getElementById('serviceDescription').value;
+            const icon = document.getElementById('serviceIcon').value || 'fas fa-cogs';
+            
+            if (!name || !description) {
+                showNotification('Please fill in all required fields', 'error');
+                return;
+            }
+            
+            const newId = services.length > 0 ? Math.max(...services.map(s => s.id)) + 1 : 1;
+            services.push({
+                id: newId,
+                name,
+                description,
+                icon
+            });
+            
+            showNotification('Service added successfully!', 'success');
+            document.getElementById('add-service-form').classList.remove('active');
+            renderServices();
+        });
+        
+        // Save Provider
+        document.getElementById('saveProvider')?.addEventListener('click', function() {
+            const name = document.getElementById('providerName').value;
+            const description = document.getElementById('providerDescription').value;
+            const phone = document.getElementById('providerPhone').value;
+            const message = document.getElementById('providerMessage').value || `Hello ${name}, I'm interested in your services`;
+            const icon = document.getElementById('providerIcon').value || 'fas fa-handshake';
+            const photo = document.getElementById('providerPhoto').value || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+            
+            if (!name || !description || !phone) {
+                showNotification('Please fill in all required fields (Name, Description, Phone)', 'error');
+                return;
+            }
+            
+            const newId = providers.length > 0 ? Math.max(...providers.map(p => p.id)) + 1 : 1;
+            providers.push({
+                id: newId,
+                name,
+                description,
+                phone,
+                whatsappMessage: message,
+                icon,
+                photo
+            });
+            
+            showNotification('Provider added successfully!', 'success');
+            document.getElementById('add-provider-form').classList.remove('active');
+            renderProviders();
+        });
+        
+        // Cancel buttons
+        document.getElementById('cancelProduct')?.addEventListener('click', function() {
+            document.getElementById('add-product-form').classList.remove('active');
+        });
+        
+        document.getElementById('cancelService')?.addEventListener('click', function() {
+            document.getElementById('add-service-form').classList.remove('active');
+        });
+        
+        document.getElementById('cancelProvider')?.addEventListener('click', function() {
+            document.getElementById('add-provider-form').classList.remove('active');
+        });
+        
+        document.getElementById('closeViewItems')?.addEventListener('click', function() {
+            document.getElementById('view-items-form').classList.remove('active');
+        });
+        
+        // Marketplace controls
+        exploreBtn.addEventListener('click', () => {
+            switchSection('services');
+        });
+        
+        marketplaceBtn.addEventListener('click', () => {
+            switchSection('marketplace');
+        });
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                renderProducts(category, productSearch.value);
+            });
+        });
+        
+        productSearch.addEventListener('input', function() {
+            const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
+            renderProducts(activeCategory, this.value);
+        });
+        
+        // Initialize
+        renderServices();
+        renderSkills();
+        renderProviders();
+        renderProducts();
+        switchSection('home');
+        
+        // Hide admin credentials in console
+        console.log('Admin access requires proper authentication.');
+    </script>
+</body>
+</html>
